@@ -10,6 +10,7 @@ class CategoriesScreen extends StatelessWidget {
     return Scaffold(
       appBar: NeumorphicAppBar(
         title: const Text("Recipe Meals"),
+        centerTitle: true,
       ),
       body: GridView(
         padding: const EdgeInsets.all(25),
