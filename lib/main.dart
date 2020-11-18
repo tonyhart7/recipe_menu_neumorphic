@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:recipe_menu_neumorphic/screen/categories_screen.dart';
 import 'package:recipe_menu_neumorphic/screen/category_meals_screen.dart';
+import 'package:recipe_menu_neumorphic/screen/meal_detail_screen.dart';
+import 'package:recipe_menu_neumorphic/screen/tabs_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -36,8 +38,12 @@ class MyApp extends StatelessWidget {
       ),
       // home: CategoriesScreen(),
       routes: {
-        '/': (ctx) => CategoriesScreen(),
+        '/': (ctx) => TabScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
       },
     );
   }
