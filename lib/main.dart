@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:recipe_menu_neumorphic/categories_screen.dart';
+import 'package:recipe_menu_neumorphic/screen/categories_screen.dart';
+import 'package:recipe_menu_neumorphic/screen/category_meals_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,7 +34,11 @@ class MyApp extends StatelessWidget {
         lightSource: LightSource.topLeft,
         depth: 6,
       ),
-      home: CategoriesScreen(),
+      // home: CategoriesScreen(),
+      routes: {
+        '/': (ctx) => CategoriesScreen(),
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+      },
     );
   }
 }

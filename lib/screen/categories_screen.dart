@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-import 'dummy_data.dart';
-import 'category_item.dart';
+import '../dummy_data.dart';
+import '../widgets/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NeumorphicAppBar(
-        title: const Text("Recipe Meals"),
+        title: Text("Recipe Meals"),
         centerTitle: true,
       ),
       body: GridView(
@@ -17,6 +17,7 @@ class CategoriesScreen extends StatelessWidget {
         children: DUMMY_CATEGORIES
             .map(
               (catData) => CategoryItem(
+                catData.id,
                 catData.title,
                 catData.color,
               ),
