@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:recipe_menu_neumorphic/screen/categories_screen.dart';
 import 'package:recipe_menu_neumorphic/screen/faforites_screen.dart';
+import 'package:recipe_menu_neumorphic/widgets/main_drawer.dart';
 
 class TabScreen extends StatefulWidget {
   @override
@@ -37,8 +38,16 @@ class _TabScreenState extends State<TabScreen> {
           _pages[_selectedPageIndex]["title"],
           style: TextStyle(color: Colors.black),
         ),
+        leading: Builder(
+          builder: (ctx1) => IconButton(
+            icon: Icon(Icons.menu_rounded),
+            color: Theme.of(context).accentColor,
+            onPressed: () => Scaffold.of(ctx1).openDrawer(),
+          ),
+        ),
         centerTitle: true,
       ),
+      drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]["page"],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
