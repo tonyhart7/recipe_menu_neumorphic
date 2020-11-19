@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_menu_neumorphic/screen/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
-  Widget buildListTile(String title, IconData icon) {
+  Widget buildListTile(String title, IconData icon, Function tapHandler) {
     return ListTile(
       leading: Icon(
         icon,
@@ -15,7 +16,7 @@ class MainDrawer extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: () {},
+      onTap: tapHandler,
     );
   }
 
@@ -29,7 +30,7 @@ class MainDrawer extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
-            color: Theme.of(context).canvasColor,
+            color: Theme.of(context).buttonColor,
             child: Text(
               "Cooking Up!",
               style: TextStyle(
@@ -40,14 +41,12 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          buildListTile(
-            "Meals",
-            Icons.restaurant,
-          ),
-          buildListTile(
-            "Filters",
-            Icons.settings,
-          ),
+          buildListTile("Meals", Icons.restaurant, () {
+            Navigator.of(context).pushReplacementNamed("/");
+          }),
+          buildListTile("Filters", Icons.settings, () {
+            Navigator.of(context).pushReplacementNamed(FilterScreen.routeName);
+          }),
         ],
       ),
     );

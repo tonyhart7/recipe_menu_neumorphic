@@ -24,8 +24,8 @@ class MealDetailScreen extends StatelessWidget {
       ),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
-      height: 150,
-      width: 300,
+      height: 180,
+      width: 350,
       child: child,
     );
   }
@@ -48,7 +48,7 @@ class MealDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 300,
+              height: 200,
               width: double.infinity,
               child: Image.network(
                 selectedMeal.imageUrl,
@@ -89,6 +89,12 @@ class MealDetailScreen extends StatelessWidget {
             ))
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pop(mealId);
+        },
+        child: Icon(Icons.delete_rounded),
       ),
     );
   }
