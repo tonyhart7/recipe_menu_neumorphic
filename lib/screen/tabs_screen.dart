@@ -3,24 +3,35 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:recipe_menu_neumorphic/screen/categories_screen.dart';
 import 'package:recipe_menu_neumorphic/screen/faforites_screen.dart';
 import 'package:recipe_menu_neumorphic/widgets/main_drawer.dart';
+import 'package:recipe_menu_neumorphic/models/meal.dart';
 
 class TabScreen extends StatefulWidget {
+  final List<Meal> favoriteMeals;
+
+  TabScreen(this.favoriteMeals);
+
   @override
   _TabScreenState createState() => _TabScreenState();
 }
 
 class _TabScreenState extends State<TabScreen> {
-  final List<Map<String, Object>> _pages = [
-    {
-      "page": CategoriesScreen(),
-      "title": "Categories",
-    },
-    {
-      "page": FavoritesScreen(),
-      "title": "Your Favorites",
-    },
-  ];
+  List<Map<String, Object>> _pages;
   int _selectedPageIndex = 0;
+
+  @override
+  void initState() {
+    _pages = [
+      {
+        "page": CategoriesScreen(),
+        "title": "Categories",
+      },
+      {
+        "page": FavoritesScreen(widget.favoriteMeals),
+        "title": "Your Favorites",
+      },
+    ];
+    super.initState();
+  }
 
   void _selectPage(int index) {
     setState(() {
